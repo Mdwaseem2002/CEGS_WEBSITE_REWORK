@@ -68,7 +68,7 @@ export default function Header() {
         : "bg-black/40 backdrop-blur-md border-b border-transparent"
         }`}
     >
-      <nav className="container mx-auto flex items-center justify-between py-4 px-6">
+      <nav className="container mx-auto flex items-center justify-between py-2 px-6">
         {/* Logo */}
         <motion.div
           className="flex items-center"
