@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Clock, Briefcase, TrendingUp, Users, DollarSign, ArrowRight, FileText, PhoneCall, Award, Sparkles } from 'lucide-react';
+import { Search, MapPin, Clock, TrendingUp, Users, DollarSign, ArrowRight, FileText, PhoneCall, Award, Sparkles } from 'lucide-react';
 import Header from '../components/Header';
 import TestimonialSlider from '../components/TestimonialSlider';
 import Banner from '../components/Banner';

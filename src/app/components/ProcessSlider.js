@@ -68,7 +68,6 @@ const ProcessSlider = () => {
   };
 
   const currentStep = steps[activeStep - 1];
-  const Icon = currentStep.icon;
 
   return (
     <div className="bg-[#030712] text-white py-20 md:py-28 px-4 sm:px-6 lg:px-16 relative overflow-hidden">
