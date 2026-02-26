@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════
+   CEGS Design System – Premium Enterprise
+   ═══════════════════════════════════════════ */
+
+:root {
+  --gold: #D2BE60;
+  --gold-hover: #B8A050;
+  --gold-light: #F4D03F;
+  --bg-dark: #030712;
+  --surface-dark: #111827;
+  --surface-mid: #1C1C1C;
+  --text-primary: #ffffff;
+  --text-secondary: #9CA3AF;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --background: #030712;
+  --foreground: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* ── Glassmorphism Utilities ── */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-gold {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(210, 190, 96, 0.05);
+  border: 1px solid rgba(210, 190, 96, 0.15);
+}
+
+/* ── Gold Gradient Text ── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D2BE60 0%, #F4D03F 50%, #D2BE60 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gold Glow Effects ── */
+.glow-gold {
+  box-shadow: 0 0 30px rgba(210, 190, 96, 0.15), 0 0 60px rgba(210, 190, 96, 0.05);
+}
+
+.glow-gold-strong {
+  box-shadow: 0 0 40px rgba(210, 190, 96, 0.25), 0 0 80px rgba(210, 190, 96, 0.1);
+}
+
+/* ── Animations ── */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out 2s infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(210, 190, 96, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(210, 190, 96, 0.5);
+}
+
+/* ── Scroll wrapper (existing) ── */
+.scroll-wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.scroll-content {
+  display: flex;
+  animation: scroll 30s linear infinite;
+}
+
+.scroll-item {
+  padding: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background: rgba(210, 190, 96, 0.3);
+  color: #fff;
+}

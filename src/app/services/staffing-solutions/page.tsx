@@ -1,0 +1,124 @@
+"use client";
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import { Users, Briefcase, Clock, Code, Settings, Building } from 'lucide-react';
+import Header from "../../components/Header";
+import Banner from '../../components/Banner';
+import TestimonialSlider from "../../components/TestimonialSlider";
+
+const StaffingModel = dynamic(() => import('../../components/ServiceModels').then(m => ({ default: m.StaffingModel })), { ssr: false });
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.12, ease: [0.25, 0.1, 0.25, 1] } }),
+};
+const stagger = { visible: { transition: { staggerChildren: 0.1 } } };
+
+const staffingTypes = [
+  { Icon: Users, name: "C2H (Contract-to-Hire)", desc: "Flexible hiring approach allowing companies to evaluate candidates before permanent placement." },
+  { Icon: Building, name: "Permanent Staffing", desc: "Finding and placing top talent for long-term organizational growth and stability." },
+  { Icon: Clock, name: "Contract Staffing", desc: "Providing skilled professionals for specific project durations or temporary needs." },
+  { Icon: Code, name: "IT Staffing", desc: "Specialized recruitment of technology professionals across various domains and expertise levels." },
+  { Icon: Settings, name: "RPO", desc: "End-to-end recruitment management tailored to your organizational requirements." },
+];
+
+const advantages = [
+  { Icon: Users, title: "Extensive Talent Network", desc: "Access to a vast pool of pre-vetted professionals across industries" },
+  { Icon: Briefcase, title: "Rigorous Screening", desc: "Comprehensive evaluation ensuring only top-quality candidates" },
+  { Icon: Clock, title: "Quick Turnaround", desc: "Efficient recruitment process to meet urgent staffing needs" },
+  { Icon: Settings, title: "Industry Expertise", desc: "Specialized knowledge across various business sectors" },
+];
+
+export default function StaffingSolutions() {
+  return (
+    <div className="bg-[#030712] min-h-screen">
+      <Header />
+
+      {/* Hero with 3D Model */}
+      <section className="relative overflow-hidden py-24 md:py-32 lg:py-40">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_20%,rgba(210,190,96,0.08),transparent)]" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: false }} variants={stagger}>
+              <motion.div variants={fadeUp} custom={0} className="mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase text-[#D2BE60] border border-[#D2BE60]/30 bg-[#D2BE60]/10 backdrop-blur-md">
+                  <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D2BE60] opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-[#D2BE60]" /></span>
+                  Service
+                </span>
+              </motion.div>
+              <motion.h1 variants={fadeUp} custom={1} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                Staffing <span className="text-gold-gradient">Solutions</span>
+              </motion.h1>
+              <motion.p variants={fadeUp} custom={2} className="text-white/50 text-lg max-w-lg font-light leading-relaxed mb-8">
+                Connecting exceptional talent with outstanding opportunities through innovative staffing solutions.
+              </motion.p>
+              <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-4">
+                {['C2H Hiring', 'IT Staffing', 'RPO Solutions'].map(tag => (
+                  <span key={tag} className="px-4 py-2 rounded-xl text-xs font-medium text-[#D2BE60]/70 bg-[#D2BE60]/5 border border-[#D2BE60]/15">{tag}</span>
+                ))}
+              </motion.div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ duration: 0.8 }}
+              className="h-[350px] md:h-[450px] lg:h-[500px] relative">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(210,190,96,0.08),transparent_70%)]" />
+              <StaffingModel />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Staffing Types */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false }} variants={stagger} className="text-center mb-16">
+            <motion.div variants={fadeUp} custom={0}>
+              <span className="inline-flex px-4 py-1.5 rounded-full text-xs font-medium tracking-widest uppercase text-[#D2BE60] border border-[#D2BE60]/20 bg-[#D2BE60]/5 mb-4">What We Offer</span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold text-white tracking-tight">Staffing <span className="text-gold-gradient">Services</span></motion.h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {staffingTypes.map((s, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group p-7 rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl hover:border-[#D2BE60]/25 hover:bg-white/[0.05] transition-all duration-500">
+                <div className="w-12 h-12 rounded-xl bg-[#D2BE60]/10 flex items-center justify-center mb-5 group-hover:bg-[#D2BE60]/15 transition-colors">
+                  <s.Icon className="w-6 h-6 text-[#D2BE60]" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">{s.name}</h3>
+                <p className="text-white/45 text-sm font-light leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advantages */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D2BE60]/5 rounded-full blur-[150px] pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false }} variants={stagger} className="text-center mb-16">
+            <motion.h2 variants={fadeUp} custom={0} className="text-4xl md:text-5xl font-bold text-white tracking-tight">Why <span className="text-gold-gradient">Choose Us</span></motion.h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {advantages.map((a, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group flex items-start gap-5 p-7 rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl hover:border-[#D2BE60]/20 hover:bg-white/[0.05] transition-all duration-500">
+                <div className="w-12 h-12 rounded-xl bg-[#D2BE60]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#D2BE60]/15 transition-colors">
+                  <a.Icon className="w-6 h-6 text-[#D2BE60]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{a.title}</h3>
+                  <p className="text-white/40 text-sm font-light leading-relaxed">{a.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <TestimonialSlider />
+      <Banner />
+    </div>
+  );
+}
